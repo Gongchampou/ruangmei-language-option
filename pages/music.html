@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Music · Ruangmei (Rongmei)</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../image/favicon_io/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Standalone stylesheet (unique to this page) -->
+  <link rel="stylesheet" href="../asset/css/music.css" />
+</head>
+<body>
+  <!-- Top App Bar -->
+  <header class="mu-appbar" role="banner">
+    <div class="mu-brand">
+      <div class="mu-logo" aria-hidden="true"><a href="../index.html">🏠</a></div>
+      <span>Ruangmei · Music</span>
+    </div>
+    <div class="mu-search" role="search">
+      <input id="muSearch" type="search" placeholder="Search songs, artists, genres" aria-label="Search music" />
+    </div>
+    <div class="mu-chips" role="tablist" aria-label="Filter by genre">
+      <button class="mu-chip active" data-genre="all" role="tab" aria-selected="true">All</button>
+      <button class="mu-chip" data-genre="folk" role="tab">Folk</button>
+      <button class="mu-chip" data-genre="ambient" role="tab">Ambient</button>
+      <button class="mu-chip" data-genre="percussion" role="tab">Percussion</button>
+      <button class="mu-chip" data-genre="instrumental" role="tab">Instrumental</button>
+    </div>
+    <button id="muTheme" class="mu-theme" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+    <!--language selector-->
+    <div id="langMount" class="lang-mount" style="margin-left:.5rem;"></div>
+  </header>
+
+  <!-- Main Shell -->
+  <main class="mu-shell" role="main">
+    <!-- Left panel: Featured and Equalizer -->
+    <section class="mu-panel mu-left" aria-label="Featured artist and visualizer">
+      <div class="mu-feature">
+        <div class="mu-avatar"><img id="muCover" src="https://images.pexels.com/photos/7130555/pexels-photo-7130555.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Current cover" /></div>
+        <div class="mu-title">
+          <b id="featName">Artist</b>
+          <span id="featTag">Genre</span>
+        </div>
+      </div>
+      <div class="mu-eq" id="muEq" aria-hidden="true">
+        <div class="mu-bars">
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+          <div class="mu-bar"></div>
+        </div>
+      </div>
+      <div>
+        <!-- Controls area (easy to edit) -->
+        <div class="mu-controls">
+          <!-- Transport buttons: Shuffle, Prev, Play/Pause, Next, Repeat -->
+          <div class="mu-transport">
+            <button id="btnShuffle" class="mu-btn" title="Shuffle">🔀</button>
+            <button id="btnPrev" class="mu-btn" title="Previous">⏮</button>
+            <button id="btnPlay" class="mu-btn primary" title="Play/Pause">▶</button>
+            <button id="btnNext" class="mu-btn" title="Next">⏭</button>
+            <button id="btnRepeat" class="mu-btn" title="Repeat">🔁</button>
+          </div>
+
+          <!-- Timeline row: Current time — Progress bar — Total time -->
+          <div class="mu-timeline">
+            <span id="muCur" class="mu-timecur">0:00</span>
+            <input id="muProgress" class="mu-range mu-progress" type="range" min="0" max="1000" step="1" value="0" aria-label="Seek" />
+            <span id="muTot" class="mu-timetot">0:00</span>
+            <!-- Volume icon + small slider on the same row -->
+            <span class="mu-volicon" aria-hidden="true" title="Volume">🔊</span>
+            <input id="muVol" class="mu-range mu-volume-range" type="range" min="0" max="100" step="1" value="80" aria-label="Volume" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Center panel: Player -->
+    <section class="mu-panel mu-center" aria-label="Player">
+      <div class="mu-now">
+        <div class="mu-cover"><img src="https://images.pexels.com/photos/7130555/pexels-photo-7130555.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Cover art" /></div>
+        <div class="mu-meta">
+          <div class="mu-song" id="muSong">Song Title</div>
+          <div class="mu-artist" id="muArtist">Artist Name</div>
+        </div>
+      </div>
+      <div class="mu-stage">
+        <div class="mu-art"><img id="muArt" src="https://images.pexels.com/photos/7130555/pexels-photo-7130555.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Large cover art"/></div>
+      </div>
+      
+      <audio id="muAudio" preload="metadata" class="mu-hidden"></audio>
+    </section>
+
+    <!-- Right panel: Queue -->
+    <aside class="mu-panel mu-right" aria-label="Queue">
+      <div class="mu-queue-head">
+        <strong>Up Next</strong>
+        <div class="mu-sort">
+          <select id="muSort" aria-label="Sort by">
+            <option value="name">Name</option>
+            <option value="time">Time</option>
+            <option value="date">Date updated</option>
+          </select>
+        </div>
+      </div>
+      
+      <div id="muQueue" class="mu-queue" role="list"></div>
+    </aside>
+  </main>
+
+  <!-- Standalone script (unique to this page) -->
+  <script src="../asset/js/music.js" defer></script>
+  <script src="../asset/js/translate.js" defer></script>
+</body>
+</html>

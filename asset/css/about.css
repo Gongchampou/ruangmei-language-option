@@ -1,0 +1,105 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 96px;
+}
+.about-hero {
+  min-height: calc(100vh - 64px);
+  min-height: calc(100dvh - 64px);
+  display: grid;
+  align-items: center;
+  background:
+    radial-gradient(
+      1200px 600px at 15% -10%,
+      rgba(91, 141, 239, 0.28),
+      transparent 60%
+    ),
+    radial-gradient(
+      1000px 500px at 85% 0%,
+      rgba(45, 212, 191, 0.22),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 480px at 50% 110%,
+      rgba(236, 72, 153, 0.18),
+      transparent 60%
+    );
+  border-bottom: 1px solid var(--border);
+}
+.lede {
+  color: var(--muted);
+  max-width: 900px;
+  margin: 0.5rem auto 1.5rem;
+}
+.badges {
+  display: inline-flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-size: 0.9rem;
+}
+.grid.four {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 900px) {
+  .grid.four {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .grid.four {
+    grid-template-columns: 1fr;
+  }
+}
+.card.accent-blue {
+  border-top: 3px solid #60a5fa;
+}
+.card.accent-teal {
+  border-top: 3px solid #2dd4bf;
+}
+.card.accent-amber {
+  border-top: 3px solid #f59e0b;
+}
+.card.accent-pink {
+  border-top: 3px solid #ec4899;
+}
+.section-head {
+  display: grid;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+.links {
+  display: grid;
+  gap: 0.5rem;
+}
+.links a {
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 0.6rem;
+  padding: 0.6rem 0.75rem;
+}
+.inline-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.site-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

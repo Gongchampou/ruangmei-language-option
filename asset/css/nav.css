@@ -1,0 +1,127 @@
+/* Basic reset */
+.site-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.site-nav > ul > li {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--text);
+  padding: 8px 12px;
+  display: inline-block;
+}
+
+/* Submenu styling */
+.submenu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  min-width: 120px;
+  z-index: 1000;
+  border-radius: 6px;
+}
+
+.submenu li {
+  display: block;
+}
+
+.submenu a {
+  display: block;
+  padding: 8px 12px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+
+/*sub-submenu*/
+
+/* Hover or focus opens dropdown */
+.has-submenu:hover > .submenu,
+.has-submenu:focus-within > .submenu {
+  display: block;
+}
+.has-submenu.open > .submenu {
+  display: block;
+}
+
+.submenu .has-submenu {
+  position: relative;
+}
+.submenu .submenu {
+  top: 0;
+  left: 100%;
+  z-index: 1001;
+}
+.submenu .has-submenu:hover > .submenu,
+.submenu .has-submenu:focus-within > .submenu {
+  display: block;
+}
+.submenu .has-submenu.open > .submenu {
+  display: block;
+}
+/*end sub-submenu*/
+
+/* Optional styling for hover */
+.submenu a:hover {
+  background: lightblue;
+}
+
+/* Optional arrow styling */
+.submenu-toggle::after {
+  content: "";
+}
+
+/* Hover, focus, active states */
+.site-nav > ul > li > a,
+.submenu-toggle {
+  border-radius: 6px;
+  transition:
+    background-color 0.12s ease,
+    color 0.12s ease,
+    transform 0.06s ease;
+}
+
+/* Top-level: highlight with primary on hover/focus and when submenu is open */
+.site-nav > ul > li > a:hover,
+.site-nav > ul > li > a:focus-visible,
+.has-submenu:hover > .submenu-toggle,
+.has-submenu:focus-within > .submenu-toggle {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* Press feedback */
+.site-nav > ul > li > a:active,
+.submenu a:active,
+.submenu-toggle:active {
+  transform: translateY(1px);
+}
+
+/* Current page indicator (apply aria-current="page" or class="is-active" on the active link) */
+.site-nav > ul > li > a[aria-current="page"],
+.site-nav > ul > li > a.is-active {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* Mobile-friendly stacking (optional) */
+@media (max-width: 768px) {
+  .submenu {
+    position: static;
+    border: none;
+    background: none;
+  }
+  .submenu a {
+    padding-left: 24px;
+  }
+}

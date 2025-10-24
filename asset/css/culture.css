@@ -1,0 +1,494 @@
+/* ---------- Base Reset & Variables ---------- */
+:root {
+  /* Use global design tokens from style.css; keep only local layout/tweaks */
+  --maxwidth: 1200px;
+  --radius: 14px;
+  --content-pad: 24px;
+  --mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New",
+    monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --serif: "Merriweather", Georgia, serif;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  --glass-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Force-disable scroll snapping for this page */
+html,
+body {
+  scroll-snap-type: none !important;
+}
+.hero,
+.section {
+  scroll-snap-align: none !important;
+  min-height: auto !important;
+}
+main {
+  scroll-snap-type: none !important;
+  scroll-padding-top: 0 !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  padding: 0;
+  /* keep layout from shifting when scrollbars appear */
+  scrollbar-gutter: stable both-edges;
+}
+
+/* ---------- Page container ---------- */
+.wrap {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 15px;
+  align-items: start;
+}
+
+/* place main content to the right of fixed sidebar */
+.content {
+  grid-column: 2;
+}
+
+/* ---------- Sidebar (left) ---------- */
+.sidebar {
+  position: fixed;
+  top: 64px; /* aligned with global header height */
+  left: 0;
+  width: 300px;
+  height: calc(100vh - 64px);
+  overflow: auto;
+  padding: 18px;
+  background: var(--surface);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  /* removing backdrop-filter avoids GPU repaints that can cause jitter */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  scrollbar-gutter: stable both-edges;
+}
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.logo {
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+}
+.logo-image {
+  background-color: transparent;
+  border:none;
+}
+.brand h1 {
+  font-size: 16px;
+  margin: 0;
+}
+.brand p {
+  font-size: 12px;
+  margin: 0;
+  color: var(--muted);
+}
+
+nav.toc {
+  margin-top: 10px;
+}
+nav.toc a {
+  display: block;
+  padding: 10px;
+  margin: 6px 0;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+nav.toc a:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+nav.toc a.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--primary);
+}
+
+.contact {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--card);
+  border: 1px dashed var(--border);
+}
+.contact strong {
+  display: block;
+  margin-bottom: 8px;
+}
+.tag {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid var(--border);
+  font-size: 12px;
+  margin: 4px 4px 0 0;
+}
+
+/* Inline style replacements */
+.note {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.customize {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.customize p {
+  margin: 6px 0;
+}
+.mt-8 {
+  margin-top: 8px;
+}
+.mt-12 {
+  margin-top: 12px;
+}
+.muted-small {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.muted {
+  color: var(--muted);
+}
+
+/* ---------- Main content ---------- */
+main {
+  background: transparent;
+  padding: 0;
+  /* override global snap */
+  scroll-snap-type: none;
+  scroll-padding-top: 0;
+}
+
+header.hero {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  align-items: stretch;
+  margin-bottom: 18px;
+}
+.hero-left {
+  padding: 22px;
+  border-radius: 18px;
+  background: var(--card);
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--border);
+}
+.hero-left h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 28px;
+}
+.hero-left p {
+  color: var(--muted);
+  margin-top: 10px;
+}
+.hero-meta {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.pill {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.hero-right {
+  padding: 6px;
+  border-radius: 12px;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+}
+.hero-image {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: block;
+  background: #eee;
+  position: relative;
+}
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- Content Cards ---------- */
+.section {
+  margin-bottom: 20px;
+  background: var(--card);
+  padding: var(--content-pad);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  /* override global full-height + snap */
+  min-height: auto;
+  scroll-snap-align: none;
+}
+.section h3 {
+  margin-top: 0;
+  font-size: 20px;
+}
+.section p.lead {
+  color: var(--muted);
+  margin-top: 6px;
+}
+.section {
+  scroll-margin-top: 80px;
+}
+
+/* Also ensure any hero sections won't snap */
+.hero {
+  scroll-snap-align: none;
+  min-height: auto;
+}
+
+/* two-column highlights */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+  margin-top: 12px;
+}
+.feature {
+  background: var(--card);
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.feature h4 {
+  margin: 0 0 8px 0;
+}
+.feature p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---------- Gallery ---------- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+.gallery .tile {
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  min-height: 120px;
+  background: var(--card);
+  cursor: pointer;
+  border: 1px solid var(--border);
+}
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.gallery .tile:hover img {
+  transform: scale(1.05);
+}
+
+/* lightbox modal */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  padding: 20px;
+}
+.lightbox.show {
+  display: flex;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(2, 6, 23, 0.6);
+}
+
+/* ---------- Accordion (for details) ---------- */
+.accordion {
+  margin-top: 12px;
+}
+.acc-item {
+  border-top: 1px dashed rgba(15, 23, 42, 0.04);
+  padding: 12px 0;
+}
+.acc-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.acc-trigger h4 {
+  margin: 0;
+  font-size: 16px;
+}
+.acc-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.38s ease;
+  color: var(--muted);
+  margin-top: 8px;
+}
+.acc-content.open {
+  max-height: 420px;
+  padding-top: 8px;
+}
+
+/* ---------- Timeline & facts ---------- */
+.timeline {
+  position: relative;
+  padding-left: 18px;
+  margin-top: 12px;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  border-radius: 4px;
+}
+.event {
+  position: relative;
+  margin: 14px 0;
+  padding-left: 12px;
+}
+.event .dot {
+  position: absolute;
+  left: -6px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.event h5 {
+  margin: 0 0 6px 0;
+}
+.event p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+  padding: 14px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 980px) {
+  .wrap {
+    grid-template-columns: 1fr;
+    padding: 0;
+    gap: 18px;
+  }
+  header.hero {
+    grid-template-columns: 1fr;
+  }
+  .content {
+    grid-column: auto;
+  }
+  .sidebar {
+    position: static;
+    left: auto;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    border-radius: var(--radius);
+  }
+}
+
+/* ---------- Print stylesheet for cultural brochures ---------- */
+@media print {
+  body {
+    background: white;
+    color: #111;
+    padding: 0;
+  }
+  .wrap {
+    max-width: 100%;
+    margin: 0;
+  }
+  .sidebar,
+  .hero-right {
+    display: none;
+  }
+  .section {
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+  }
+  header.hero {
+    display: block;
+  }
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Accessibility focus ring */
+a:focus,
+button:focus {
+  outline: 3px solid rgba(11, 161, 140, 0.18);
+  outline-offset: 3px;
+  border-radius: 6px;
+}

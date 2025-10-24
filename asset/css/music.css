@@ -1,0 +1,680 @@
+/* Music page – standalone, unique styling */
+:root {
+  --bg: #0b1020; /* page background */
+  --bg-2: #0d1228; /* panels background */
+  --text: #e6e8ef; /* primary text */
+  --muted: #9aa3b2; /* secondary text */
+  --brand: #7c5cff; /* brand accent */
+  --accent: #23d5ab; /* progress/ok */
+  --danger: #ff6b6b; /* error */
+  --ring: rgba(124, 92, 255, 0.35);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Ubuntu,
+    Helvetica,
+    Arial,
+    sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 10% 10%, #18204a 0%, transparent 55%),
+    radial-gradient(1200px 800px at 100% 0%, #1b2b67 0%, transparent 60%),
+    linear-gradient(160deg, #0a0f20 0%, #0b1020 60%);
+  overflow: hidden; /* immersive app */
+}
+
+/* Light mode override */
+body.mu-light {
+  --bg: #f7f8fb;
+  --bg-2: #ffffff;
+  --text: #0a0f20;
+  --muted: #5b667a;
+  --ring: rgba(124, 92, 255, 0.22);
+  background:
+    radial-gradient(1200px 600px at 10% 10%, #dfe6ff 0%, transparent 55%),
+    radial-gradient(1200px 800px at 100% 0%, #eaf0ff 0%, transparent 60%),
+    linear-gradient(160deg, #f8fafc 0%, #eef2ff 60%);
+}
+
+/* top app bar */
+.mu-appbar {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  gap: 12px;
+  backdrop-filter: saturate(140%) blur(10px);
+  background: linear-gradient(
+    180deg,
+    rgba(13, 18, 40, 0.65),
+    rgba(13, 18, 40, 0.35)
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+body.mu-light .mu-appbar {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.85),
+    rgba(255, 255, 255, 0.65)
+  );
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.mu-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.mu-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: grid;
+  place-items: center;
+  color: #0b1020;
+  background: conic-gradient(
+    from 210deg at 50% 50%,
+    var(--brand),
+    var(--accent)
+  );
+  box-shadow: 0 6px 18px rgba(124, 92, 255, 0.35);
+}
+.mu-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  max-width: 520px;
+}
+.mu-search input {
+  flex: 1;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  padding: 0 12px;
+}
+.mu-search input::placeholder {
+  color: var(--muted);
+}
+.mu-search input:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ring);
+}
+body.mu-light .mu-search input {
+  border-color: rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.04);
+}
+.mu-chips {
+  display: flex;
+  gap: 8px;
+}
+.mu-chip {
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--muted);
+  cursor: pointer;
+}
+.mu-chip.active {
+  color: var(--text);
+  border-color: var(--brand);
+}
+body.mu-light .mu-chip {
+  border-color: rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* Theme toggle button */
+.mu-theme {
+  height: 36px;
+  width: 36px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.mu-theme:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ring);
+}
+body.mu-light .mu-theme {
+  border-color: rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* layout */
+.mu-shell {
+  height: calc(100% - 64px);
+  display: grid;
+  grid-template-columns: 440px 1fr 360px;
+  gap: 16px;
+  padding: 16px;
+}
+@media (max-width: 1100px) {
+  .mu-shell {
+    grid-template-columns: 280px 1fr 320px;
+  }
+}
+@media (max-width: 900px) {
+  .mu-shell {
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content auto min-content;
+    overflow: auto;
+  }
+}
+@media (max-height: 750px) {
+  .mu-stage .mu-art {
+    --mu-d: min(24vw, 380px, 42vh);
+  }
+}
+
+.mu-panel {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.03)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+body.mu-light .mu-panel {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.7)
+  );
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* left: featured and equalizer */
+.mu-left {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  position: relative;
+}
+.mu-feature {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.mu-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+.mu-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mu-title {
+  display: flex;
+  flex-direction: column;
+}
+.mu-title b {
+  font-size: 15px;
+}
+.mu-title span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.mu-eq {
+  display: grid;
+  place-items: center;
+}
+.mu-bars {
+  display: flex;
+  gap: 6px;
+  height: 120px;
+  align-items: flex-end;
+}
+.mu-bar {
+  width: 8px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, var(--accent), #7cf7d5);
+}
+/* bar no. 30 total (you can add up again future)*/
+/*----------------------------------------------------------*/
+.mu-playing .mu-bar {
+  animation: wave 1.1s ease-in-out infinite;
+}
+.mu-bar:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.mu-bar:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.mu-bar:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.mu-bar:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.mu-bar:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.mu-bar:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.mu-bar:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.mu-bar:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.mu-bar:nth-child(10) {
+  animation-delay: 0.9s;
+}
+.mu-bar:nth-child(11) {
+  animation-delay: 1s;
+}
+.mu-bar:nth-child(12) {
+  animation-delay: 1.1s;
+}
+.mu-bar:nth-child(13) {
+  animation-delay: 1.2s;
+}
+.mu-bar:nth-child(14) {
+  animation-delay: 1.3s;
+}
+.mu-bar:nth-child(15) {
+  animation-delay: 1.4s;
+}
+.mu-bar:nth-child(16) {
+  animation-delay: 1.5s;
+}
+.mu-bar:nth-child(17) {
+  animation-delay: 1.6s;
+}
+.mu-bar:nth-child(18) {
+  animation-delay: 1.7s;
+}
+.mu-bar:nth-child(19) {
+  animation-delay: 1.8s;
+}
+.mu-bar:nth-child(20) {
+  animation-delay: 1.9s;
+}
+.mu-bar:nth-child(21) {
+  animation-delay: 2s;
+}
+.mu-bar:nth-child(22) {
+  animation-delay: 2.1s;
+}
+.mu-bar:nth-child(23) {
+  animation-delay: 2.2s;
+}
+.mu-bar:nth-child(24) {
+  animation-delay: 2.3s;
+}
+.mu-bar:nth-child(25) {
+  animation-delay: 2.4s;
+}
+.mu-bar:nth-child(26) {
+  animation-delay: 2.5s;
+}
+.mu-bar:nth-child(27) {
+  animation-delay: 2.6s;
+}
+.mu-bar:nth-child(28) {
+  animation-delay: 2.7s;
+}
+.mu-bar:nth-child(29) {
+  animation-delay: 2.8s;
+}
+.mu-bar:nth-child(30) {
+  animation-delay: 2.9s;
+}
+@keyframes wave {
+  0%,
+  100% {
+    height: 18%;
+  }
+  50% {
+    height: 88%;
+  }
+}
+/*----------------------------------------------------------*/
+
+/* center: player */
+.mu-center {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 0;
+  overflow: hidden;
+}
+.mu-now {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.mu-cover {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+.mu-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mu-meta {
+  display: flex;
+  flex-direction: column;
+}
+.mu-song {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.mu-artist {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.mu-stage {
+  display: grid;
+  place-items: center;
+  padding: 10px;
+}
+.mu-stage .mu-art {
+  --mu-d: min(26vw, 420px, 46vh);
+  width: var(--mu-d);
+  height: var(--mu-d);
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+.mu-stage .mu-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  animation: spin 12s linear infinite;
+  animation-play-state: paused;
+  transform-origin: 50% 50%;
+  border-radius: 50%;
+}
+body.mu-playing .mu-stage .mu-art img {
+  animation-play-state: running;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.mu-controls {
+  /* Stack rows: transport, timeline, volume */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  padding: 6px 12px; /* small padding so items don't touch edges */
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 18, 40, 0.35),
+    rgba(13, 18, 40, 0.65)
+  );
+}
+body.mu-light .mu-controls {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.65),
+    rgba(255, 255, 255, 0.85)
+  );
+}
+/*-------------------------------------------------------------------*/
+/* Controls layout (easy to edit) */
+.mu-transport {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.mu-transport .mu-btn {
+  width: 44px;
+  flex: 0 0 44px;
+}
+.mu-timeline {
+  display: grid;
+  /* cur | progress(≈70%) | total | icon | volume(≈30%) */
+  grid-template-columns: auto minmax(0, 7fr) auto auto minmax(80px, 3fr);
+  gap: 10px;
+  align-items: center;
+}
+.mu-timecur, .mu-timetot {
+  font-size: 12px;
+  color: var(--muted);
+  min-width: 36px;
+  text-align: center;
+}
+.mu-progress {
+  height: 10px;
+  width: 100%;
+  min-width: 0;
+}
+.mu-volicon{font-size:14px; color:var(--muted); line-height:1;}
+.mu-volume {
+  display: flex;
+}
+.mu-volume-range { width: 100%; min-width: 0; }
+
+.mu-btn {
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.mu-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ring);
+}
+.mu-btn.primary {
+  background: linear-gradient(180deg, var(--brand), #5b38ff);
+}
+.mu-btn.toggled {
+  border-color: var(--brand);
+  color: #fff;
+}
+body.mu-light .mu-btn {
+  border-color: rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.04);
+}
+.mu-range {
+  appearance: none;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+.mu-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: conic-gradient(from 200deg, var(--brand), var(--accent));
+  border: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+body.mu-light .mu-range {
+  background: rgba(0, 0, 0, 0.08);
+}
+.mu-time {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Cross-browser colored progress lines */
+/* WebKit: we set base track; fill is applied via inline gradient from JS */
+#muProgress::-webkit-slider-runnable-track,
+#muVol::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: 999px;
+  background: transparent;
+}
+
+/* Firefox: use progress pseudo elements */
+#muProgress::-moz-range-track {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+#muProgress::-moz-range-progress {
+  height: 10px;
+  border-radius: 999px;
+  background: #e11d48;
+}
+body.mu-light #muProgress::-moz-range-track {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+#muVol::-moz-range-track {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+#muVol::-moz-range-progress {
+  height: 10px;
+  border-radius: 999px;
+  background: #000000;
+}
+body.mu-light #muVol::-moz-range-track {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* right: queue */
+.mu-right {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.mu-queue-head {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mu-queue {
+  height: 100%;
+  overflow: auto;
+  padding: 8px;
+}
+.mu-track {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 8px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.mu-track:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+.mu-track.active {
+  outline: 2px solid var(--brand);
+}
+body.mu-light .mu-track:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+.mu-track .t-cover {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.mu-track .t-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mu-track .t-title {
+  font-size: 14px;
+}
+.mu-track .t-artist {
+  color: var(--muted);
+  font-size: 12px;
+}
+.mu-track .t-time {
+  color: var(--muted);
+  font-size: 12px;
+  padding-right: 6px;
+}
+
+/* helpers */
+.mu-hidden {
+  display: none;
+}
+.mu-spacer {
+  flex: 1;
+}
+
+:where(button, input).mu-btn:focus-visible,
+:where(input).mu-range:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ring);
+}
+/*-----------------------------------------------------------------*/
+/*music sort*/
+.mu-sort {
+  display: flex;
+  align-items: center;
+}
+.mu-sort select {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+/*
+.mu-sort select:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ring);
+}*/
+/*-----------------------------------------------------------------*/
+

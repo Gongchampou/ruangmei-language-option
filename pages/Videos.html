@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Videos · Ruangmei (Rongmei)</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../image/favicon_io/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../asset/css/style.css" />
+  <link rel="stylesheet" href="../asset/css/nav.css" />
+  <link rel="stylesheet" href="../asset/css/videos.css" />
+</head>
+<body>
+
+  <!-- Site Header: same structure as index.html -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"><img class="logo-image" src="../image/icon/hornbill-bird-cartoon-removebg-preview_1_-removebg-preview.png" alt="logo"/></span>
+        <span class="brand-text">Ruangmei · Rongmei</span>
+      </div>
+      <!-- Navigation -->
+      <nav class="site-nav" aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu" id="navToggle">☰</button>
+        <ul id="primary-menu">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="culture.html">Culture</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="has-submenu">
+            <a class="submenu-toggle">Resources ▾</a>
+            <ul class="submenu">
+              <li><a href="library.html">Books</a></li>
+              <li><a href="music.html">Music</a></li>
+              <li><a href="contribution.html">Contribute</a></li>
+              <li><a href="Videos.html">Videos</a></li>
+            </ul>
+          </li>
+          <li><a href="community.html">Community</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <!-- Videos page controls: search and sort placed in header -->
+      <div class="vi-header-controls" style="display:flex; gap:.5rem; align-items:center;">
+        <div class="vi-search" role="search">
+          <input id="viSearch" type="search" placeholder="Search videos" aria-label="Search videos" />
+        </div>
+        <div class="vi-sort">
+          <select id="viSort" aria-label="Sort by">
+            <option value="name">Name</option>
+            <option value="source">Source</option>
+            <option value="date">Date updated</option>
+          </select>
+        </div>
+      </div>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌓</button>
+      <!--language selector-->
+      <div id="langMount" class="lang-mount"></div>
+    </div>
+  </header>
+
+  <!-- Main content shell: contains the video list (right now list-only, player opens in modal) -->
+  <main id="main" class="vi-shell" role="main">
+    <!-- Sidebar-style list: header with title + sort, and the grid of cards -->
+    <section class="vi-list" aria-label="Video list">
+      <!-- List header with title and simple sort dropdown -->
+      <div class="vi-head">
+        <strong>All Videos</strong>
+      </div>
+      <!-- Grid where cards are rendered by asset/js/videos.js -->
+      <div id="viGrid" class="vi-grid" role="list"></div>
+    </section>
+  </main>
+
+  <!-- Modal overlay: shown when a card is clicked; contains iframe player and meta -->
+  <div id="viModal" class="vi-modal hidden" role="dialog" aria-modal="true" aria-label="Video player">
+    <div class="vi-dialog">
+      <button id="viClose" class="vi-close" aria-label="Close">✕</button>
+      <div class="vi-modal-stage">
+        <iframe id="viModalFrame" title="Video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="vi-modal-meta">
+        <div id="viModalTitle" class="vi-title">Video Title</div>
+        <div id="viModalInfo" class="vi-info">Source</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../asset/js/script.js" defer></script>
+  <script src="../asset/js/videos.js" defer></script>
+  <script src="../asset/js/translate.js" defer></script>
+</body>
+</html>

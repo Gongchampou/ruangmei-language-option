@@ -1,0 +1,362 @@
+/* Videos page styles */
+/* Style tokens and layout rules for the Videos page.
+   Notes:
+   - Comments only; no behavior changes.
+   - Sizes for the card and thumbnail are intentionally kept as you customized. */
+:root {
+  --vi-bg: #0b0b0c;
+  --vi-fg: #f6f7fb;
+  --vi-muted: #a9afbe;
+  --vi-card: #141418;
+  --vi-card-hover: #1a1a20;
+  --vi-accent: #e11d48; /* pink-red */
+  --vi-border: rgba(255, 255, 255, 0.08);
+}
+
+/* Light mode overrides (day theme). Toggled by script.js using body[data-theme="light"]. */
+body[data-theme="light"] {
+  --vi-bg: #f7f8fb;
+  --vi-fg: #0a0f20;
+  --vi-muted: #5b667a;
+  --vi-card: #ffffff;
+  --vi-card-hover: #f2f4f8;
+  --vi-accent: #7c5cff;
+  --vi-border: rgba(0, 0, 0, 0.08);
+}
+
+/* Global box-sizing and font family */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    sans-serif;
+  background: var(--vi-bg);
+  color: var(--vi-fg);
+}
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* Top bar */
+/* vi-appbar: sticky top bar with search and branding */
+.vi-appbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.25) 70%,
+    rgba(0, 0, 0, 0)
+  );
+  backdrop-filter: blur(6px);
+}
+.vi-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+.vi-home {
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+.vi-search input {
+  width: 180px;
+  max-width: 32vw;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 0.6rem;
+  background: var(--vi-card);
+  border: 1px solid var(--vi-border);
+  color: var(--vi-fg);
+  outline: none;
+}
+.vi-search input::placeholder {
+  color: var(--vi-muted);
+}
+
+/* Header controls group in the site header (search + sort) */
+.vi-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+.vi-sort select {
+  height: 36px;
+}
+@media (max-width: 900px) {
+  .vi-search input {
+    width: 150px;
+    max-width: 50vw;
+  }
+}
+
+/* Tidy header spacing only on this page */
+.site-header .header-inner {
+  gap: 0.75rem;
+}
+@media (min-width: 901px) {
+  .site-header .header-inner {
+    justify-content: flex-start;
+  }
+  .site-header .header-inner > .brand {
+    margin-right: 0.5rem;
+  }
+  .site-header .header-inner > .site-nav {
+    margin-right: 0.5rem;
+  }
+  .vi-header-controls {
+    margin-left: auto;
+  }
+}
+
+/* Layout */
+/* vi-shell: main grid container for the page */
+.vi-shell {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+@media (min-width: 1024px) {
+  .vi-shell {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+/* List header + sort (match music style) */
+/* vi-head: header with sort dropdown */
+.vi-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 4px;
+}
+.vi-sort select {
+  border: 1px solid var(--vi-border);
+  background: var(--vi-bg);
+  color: var(--vi-fg);
+  border-radius: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+/* Player */
+/* vi-player: sticky player container */
+.vi-player {
+  display: grid;
+  gap: 0.5rem;
+}
+@media (min-width: 1024px) {
+  .vi-player {
+    position: sticky;
+    top: 1rem;
+  }
+}
+.vi-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid var(--vi-border);
+}
+.vi-stage iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.vi-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.vi-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.vi-info {
+  color: var(--vi-muted);
+  font-size: 0.9rem;
+}
+
+/* Grid */
+/*
+  vi-list  → wrapper for header + scrollable grid area
+  vi-grid  → grid where cards render (set to 5 columns of fixed width)
+*/
+.vi-list {
+  display: grid;
+  gap: 0.5rem;
+}
+@media (min-width: 1024px) {
+  .vi-list {
+    grid-template-rows: auto 1fr;
+    max-height: calc(100vh - 2rem);
+  }
+}
+.vi-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 3in);
+  gap: 0.5rem;
+  justify-content: start;
+  align-items: stretch;
+}
+@media (min-width: 1024px) {
+  .vi-grid {
+    overflow: auto;
+  }
+}
+
+/* Individual video card: fixed 3in × 1in with left thumbnail and right text */
+.vi-card {
+  display: grid;
+  width: 3in;
+  height: 1in;
+  grid-template-columns: 1.5in 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas: "thumb title" "thumb meta";
+  align-items: center;
+  gap: -22px;
+  background: var(--vi-card);
+  border: 1px solid var(--vi-border);
+  border-radius: 0.5rem;
+  padding: 0.35rem;
+  cursor: pointer;
+  transition:
+    transform 0.12s ease,
+    background 0.12s ease,
+    border-color 0.12s ease;
+}
+.vi-card:hover {
+  transform: translateY(-2px);
+  background: var(--vi-card-hover);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Thumbnail container (left column). The width/height are controlled by your card grid.
+   We keep your current sizing choices and only explain purpose here. */
+.vi-thumb {
+  grid-area: thumb;
+  position: relative;
+  width: 70%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #000;
+}
+.vi-thumb img {
+  position: absolute;
+  inset: 0;
+  gap: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05);
+}
+
+/* Card title text. Wraps up to two lines and breaks long words. */
+.vi-ctitle {
+  grid-area: title;
+  font-weight: 600;
+  line-height: 1.2;
+  font-size: 0.8rem;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  margin-left: -30px;
+}
+.vi-cmeta {
+  grid-area: meta;
+  color: var(--vi-muted);
+  font-size: 0.7rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: -30px;
+}
+
+/* Small helpers */
+.hidden {
+  display: none !important;
+}
+
+/* Modal overlay */
+.vi-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  z-index: 100;
+}
+.vi-dialog {
+  position: relative;
+  width: min(1000px, 96vw);
+  max-height: 92vh;
+  background: var(--vi-card);
+  border: 1px solid var(--vi-border);
+  border-radius: 0.9rem;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+.vi-close {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  border: 1px solid var(--vi-border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--vi-fg);
+  border-radius: 0.6rem;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+}
+.vi-modal-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+.vi-modal-stage iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.vi-modal-meta {
+  padding: 0.75rem;
+  display: grid;
+  gap: 0.25rem;
+  border-top: 1px solid var(--vi-border);
+}

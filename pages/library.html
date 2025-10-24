@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Library - 100 Book Collection</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/favicon_io/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../asset/css/style.css" />
+    <link rel="stylesheet" href="../asset/css/library.css" />
+
+    <!-- Inline CSS: Layout, Cards (radius 10px), Grid 6-per-row, Responsive, Themes -->
+  </head>
+  <body>
+   
+
+    <!-- Main: Toolbar + Grid -->
+    <main class="container">
+      <!-- Toolbar consistent with index wide style -->
+      <div class="toolbar">
+        <div class="controls" style="width:100%; background-color: var(--card);">
+          <!-- Filter input + Search button + Clear -->
+          <div class="search-group" style="flex:1;">
+            <a class="home-tile" href="../index.html" aria-label="Home">🏠︎</a>
+            <div class="input-wrap">
+              <input id="filterInput" type="text" placeholder="Filter by title or ID..." aria-label="Filter books" />
+              <button id="clearBtn" class="clear-icon" type="button" aria-label="Clear search" title="Clear">&times;</button>
+            </div>
+          </div>
+
+          <!-- Filter mode selection -->
+          <select id="filterMode" title="Filter mode">
+            <option value="contains" selected>Contains</option>
+            <option value="starts">Starts With</option>
+            <option value="ends">Ends With</option>
+            <option value="equals">Equals</option>
+          </select>
+
+          <!-- Theme selection: Light, Dark, Night -->
+          <select id="themeSelect" class="theme-select" title="Theme">
+            <option value="light">💡</option>
+            <option value="dark">🌚</option>
+            <option value="night">🌙</option>
+          </select>
+          <!--language selector-->
+          <div id="langMount" class="lang-mount"></div>
+        </div>
+      </div>
+
+      <!-- Grid of 30 static book cards (image + title only) -->
+      <section id="grid" class="grid" aria-live="polite">
+        <!-- 30 static anchor cards -->
+        
+        <a class="card" id="book-01" target="_blank" href="https://pub-cd13a035309e4b5f85262d0c366d47e2.r2.dev/File-Item/rongmei%20migration.pdf" data-keywords="Rongmei Migration">
+          <img class="cover" src="https://pub-cd13a035309e4b5f85262d0c366d47e2.r2.dev/File-Item/COVER/pngimg.com%20-%20book_PNG2111.png" alt="Rongmei Migration" />
+          <div class="meta"><span class="id-badge"></span><h3 class="title">Rongmei Migration</h3></div>
+        </a>
+        <a class="card" id="book-02" target="_blank" href="https://pub-cd13a035309e4b5f85262d0c366d47e2.r2.dev/File-Item/RevisedCurriculumSyllabusClass9n10.pdf" data-keywords="Revised Curriculum">
+          <img class="cover" src="https://pub-cd13a035309e4b5f85262d0c366d47e2.r2.dev/File-Item/COVER/Screenshot%202025-10-23%20034709.png" alt="Revised Curriculum" />
+          <div class="meta"><span class="id-badge"></span><h3 class="title">Revised Curriculum</h3></div>
+        </a>
+        <a class="card" id="book-03" target="_blank" href="https://pub-cd13a035309e4b5f85262d0c366d47e2.r2.dev/File-Item/library%20book/The%20Kinship%20Terminology%20of%20the%20Rongmei%20Nagas.pdf" data-keywords="Kinship Terminology">
+          <img class="cover" src="https://pub-cd13a035309e4b5f85262d0c366d47e2.r2.dev/image/library%20image/generated-image.png" alt="Book 03 cover" />
+          <div class="meta"><span class="id-badge">#book-03</span><h3 class="title">Kinship Terminology</h3></div>
+        </a>
+        <a class="card" id="book-04" target="_blank" href="#book-04" data-keywords="book 04 book-04">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+04" alt="Book 04 cover" />
+          <div class="meta"><span class="id-badge">#book-04</span><h3 class="title">Book 04</h3></div>
+        </a>
+        <a class="card" id="book-05" target="_blank" href="#book-05" data-keywords="book 05 book-05">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+05" alt="Book 05 cover" />
+          <div class="meta"><span class="id-badge">#book-05</span><h3 class="title">Book 05</h3></div>
+        </a>
+        <a class="card" id="book-06" target="_blank" href="#book-06" data-keywords="book 06 book-06">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+06" alt="Book 06 cover" />
+          <div class="meta"><span class="id-badge">#book-06</span><h3 class="title">Book 06</h3></div>
+        </a>
+        <a class="card" id="book-07" target="_blank" href="#book-07" data-keywords="book 07 book-07">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+07" alt="Book 07 cover" />
+          <div class="meta"><span class="id-badge">#book-07</span><h3 class="title">Book 07</h3></div>
+        </a>
+        <a class="card" id="book-08" target="_blank" href="#book-08" data-keywords="book 08 book-08">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+08" alt="Book 08 cover" />
+          <div class="meta"><span class="id-badge">#book-08</span><h3 class="title">Book 08</h3></div>
+        </a>
+        <a class="card" id="book-09" target="_blank" href="#book-09" data-keywords="book 09 book-09">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+09" alt="Book 09 cover" />
+          <div class="meta"><span class="id-badge">#book-09</span><h3 class="title">Book 09</h3></div>
+        </a>
+        <a class="card" id="book-10" target="_blank" href="#book-10" data-keywords="book 10 book-10">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+10" alt="Book 10 cover" />
+          <div class="meta"><span class="id-badge">#book-10</span><h3 class="title">Book 10</h3></div>
+        </a>
+        <a class="card" id="book-11" target="_blank" href="#book-11" data-keywords="book 11 book-11">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+11" alt="Book 11 cover" />
+          <div class="meta"><span class="id-badge">#book-11</span><h3 class="title">Book 11</h3></div>
+        </a>
+        <a class="card" id="book-12" target="_blank" href="#book-12" data-keywords="book 12 book-12">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+12" alt="Book 12 cover" />
+          <div class="meta"><span class="id-badge">#book-12</span><h3 class="title">Book 12</h3></div>
+        </a>
+        <a class="card" id="book-13" target="_blank" href="#book-13" data-keywords="book 13 book-13">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+13" alt="Book 13 cover" />
+          <div class="meta"><span class="id-badge">#book-13</span><h3 class="title">Book 13</h3></div>
+        </a>
+        <a class="card" id="book-14" target="_blank" href="#book-14" data-keywords="book 14 book-14">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+14" alt="Book 14 cover" />
+          <div class="meta"><span class="id-badge">#book-14</span><h3 class="title">Book 14</h3></div>
+        </a>
+        <a class="card" id="book-15" target="_blank" href="#book-15" data-keywords="book 15 book-15">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+15" alt="Book 15 cover" />
+          <div class="meta"><span class="id-badge">#book-15</span><h3 class="title">Book 15</h3></div>
+        </a>
+        <a class="card" id="book-16" target="_blank" href="#book-16" data-keywords="book 16 book-16">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+16" alt="Book 16 cover" />
+          <div class="meta"><span class="id-badge">#book-16</span><h3 class="title">Book 16</h3></div>
+        </a>
+        <a class="card" id="book-17" target="_blank" href="#book-17" data-keywords="book 17 book-17">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+17" alt="Book 17 cover" />
+          <div class="meta"><span class="id-badge">#book-17</span><h3 class="title">Book 17</h3></div>
+        </a>
+        <a class="card" id="book-18" target="_blank" href="#book-18" data-keywords="book 18 book-18">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+18" alt="Book 18 cover" />
+          <div class="meta"><span class="id-badge">#book-18</span><h3 class="title">Book 18</h3></div>
+        </a>
+        <a class="card" id="book-19" target="_blank" href="#book-19" data-keywords="book 19 book-19">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+19" alt="Book 19 cover" />
+          <div class="meta"><span class="id-badge">#book-19</span><h3 class="title">Book 19</h3></div>
+        </a>
+        <a class="card" id="book-20" target="_blank" href="#book-20" data-keywords="book 20 book-20">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+20" alt="Book 20 cover" />
+          <div class="meta"><span class="id-badge">#book-20</span><h3 class="title">Book 20</h3></div>
+        </a>
+        <a class="card" id="book-21" target="_blank" href="#book-21" data-keywords="book 21 book-21">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+21" alt="Book 21 cover" />
+          <div class="meta"><span class="id-badge">#book-21</span><h3 class="title">Book 21</h3></div>
+        </a>
+        <a class="card" id="book-22" target="_blank" href="#book-22" data-keywords="book 22 book-22">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+22" alt="Book 22 cover" />
+          <div class="meta"><span class="id-badge">#book-22</span><h3 class="title">Book 22</h3></div>
+        </a>
+        <a class="card" id="book-23" target="_blank" href="#book-23" data-keywords="book 23 book-23">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+23" alt="Book 23 cover" />
+          <div class="meta"><span class="id-badge">#book-23</span><h3 class="title">Book 23</h3></div>
+        </a>
+        <a class="card" id="book-24" target="_blank" href="#book-24" data-keywords="book 24 book-24">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+24" alt="Book 24 cover" />
+          <div class="meta"><span class="id-badge">#book-24</span><h3 class="title">Book 24</h3></div>
+        </a>
+        <a class="card" id="book-25" target="_blank" href="#book-25" data-keywords="book 25 book-25">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+25" alt="Book 25 cover" />
+          <div class="meta"><span class="id-badge">#book-25</span><h3 class="title">Book 25</h3></div>
+        </a>
+        <a class="card" id="book-26" target="_blank" href="#book-26" data-keywords="book 26 book-26">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+26" alt="Book 26 cover" />
+          <div class="meta"><span class="id-badge">#book-26</span><h3 class="title">Book 26</h3></div>
+        </a>
+        <a class="card" id="book-27" target="_blank" href="#book-27" data-keywords="book 27 book-27">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+27" alt="Book 27 cover" />
+          <div class="meta"><span class="id-badge">#book-27</span><h3 class="title">Book 27</h3></div>
+        </a>
+        <a class="card" id="book-28" target="_blank" href="#book-28" data-keywords="book 28 book-28">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+28" alt="Book 28 cover" />
+          <div class="meta"><span class="id-badge">#book-28</span><h3 class="title">Book 28</h3></div>
+        </a>
+        <a class="card" id="book-29" target="_blank" href="#book-29" data-keywords="book 29 book-29">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+29" alt="Book 29 cover" />
+          <div class="meta"><span class="id-badge">#book-29</span><h3 class="title">Book 29</h3></div>
+        </a>
+        <a class="card" id="book-30" target="_blank" href="#book-30" data-keywords="book 30 book-30">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+30" alt="Book 30 cover" />
+          <div class="meta"><span class="id-badge">#book-30</span><h3 class="title">Book 30</h3></div>
+        </a>
+        <a class="card" id="book-31" target="_blank" href="#book-31" data-keywords="book 31 book-31">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+31" alt="Book 31 cover" />
+          <div class="meta"><span class="id-badge">#book-31</span><h3 class="title">Book 31</h3></div>
+        </a>
+        <a class="card" id="book-32" target="_blank" href="#book-32" data-keywords="book 32 book-32">
+          <img class="cover" src="https://placehold.co/300x450?text=Book+32" alt="Book 32 cover" />
+          <div class="meta"><span class="id-badge">#book-32</span><h3 class="title">Book 32</h3></div>
+        </a>
+      </section>
+      <div id="noResults">No books match you search.</div>
+    </main>
+
+    <!-- Footer: counts and note about theme persistence -->
+    <footer class="footer container">
+      <div><span class="count" id="visibleCount">0</span> / <span id="totalCount">0</span> books</div>
+      <div>All the Book is not own by me. It a place where to share. Copyright .<a href="../pages/contact.html" alt="Claim & Report" style="text-decoration: none; color:red"><blink>(Claim & Report)</blink></a></div>
+    </footer>
+
+    <!-- Inline JS: Filter/search and theme persistence for static cards -->
+    
+    <script src="../asset/js/library.js" defer></script>
+    <script src="../asset/js/script.js" defer></script>
+    <script src="../asset/js/translate.js" defer></script>
+  </body>
+</html>

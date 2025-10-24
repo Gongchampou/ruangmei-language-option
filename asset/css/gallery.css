@@ -1,0 +1,264 @@
+/* Gallery theme colors (you can edit these) */
+:root {
+  --primary: #06b6d4;
+  --accent: #f43f5e;
+  --ring: rgba(6, 182, 212, 0.28);
+}
+/* Light mode overrides (applies when theme is set to light) */
+body[data-theme="light"] {
+  --primary: #0891b2;
+  --accent: #e11d48;
+  --ring: rgba(8, 145, 178, 0.22);
+}
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 96px;
+  scroll-snap-type: none;
+}
+.section {
+  padding: 1rem 0;
+  min-height: auto;
+  scroll-snap-align: unset;
+  margin-bottom: -20px;
+
+}
+/* Toolbar: filter chips and search box at the top */
+.gl-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 0.25rem 0 0.5rem;
+}
+.gl-chips {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.gl-chip {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
+.gl-chip.active,
+.gl-chip:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+.gl-search {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+.gl-search input {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.5rem 0.6rem;
+  border-radius: 10px;
+  min-width: 220px;
+}
+/* Grid: responsive layout for the image cards */
+.gl-grid {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+@media (max-width: 1200px) {
+  .gl-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 900px) {
+  .gl-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 700px) {
+  .gl-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 420px) {
+  .gl-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Card tile: each image thumbnail lives inside this box */
+.g-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--primary) 12%, var(--surface)),
+    color-mix(in oklab, var(--accent) 8%, var(--surface))
+  );
+}
+/* Thumbnail image inside the grid card */
+.g-item img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+  filter: saturate(1.05) contrast(1.03);
+}
+.g-item:hover img {
+  transform: scale(1.02);
+}
+.g-cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.45rem 0.6rem;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.35));
+  color: #fff;
+  font-size: 0.92rem;
+}
+/* Viewer overlay: dark backdrop + dialog that opens on click */
+.gl-viewer {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.gl-viewer.open {
+  display: flex;
+}
+/* Dialog (viewer area): size and centering */
+.gl-stage {
+  position: relative;
+  width: clamp(320px, 92vw, 1200px);
+  max-width: min(92vw, 1200px);
+  max-height: 86vh;
+  min-height: 60vh;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  align-items: center;      /* center image vertically */
+  justify-items: center;    /* center image horizontally */
+}
+/* The big image inside the dialog: always fit inside with a small margin */
+.gl-stage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;      /* guarantee full image inside */
+  padding: 12px;            /* gutter so it never touches edges */
+  box-sizing: border-box;
+  background: color-mix(in oklab, var(--surface) 85%, black);
+}
+/* Caption bar at the bottom of the dialog */
+.gl-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  border-top: 1px solid var(--border);
+}
+/* Previous/Next arrow button container (positioned on the sides) */
+.gl-ctrls {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.gl-btn {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  z-index: 3;
+}
+/* Small hover effect for all round buttons */
+.gl-btn:hover {
+  filter: brightness(1.05);
+}
+/* Close button (top-right of dialog) */
+.gl-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+.hide {
+  display: none !important;
+}
+/* Keep dialog looking the same even if the image can't load */
+.gl-stage.empty::before {
+  display: none !important;
+}
+/* fullscreen and fallback */
+/* Fullscreen button (top-left of dialog) */
+.gl-full {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+}
+/* We hide any fallback text inside the dialog so it stays clean */
+.gl-fallback {
+  display: none !important;
+}
+
+/* If a thumbnail fails to load in the grid, show a soft placeholder */
+.g-item.broken img {
+  opacity: 0;
+}
+.g-item.broken::before {
+  content: "Preview not available";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--primary) 8%, var(--surface)),
+    color-mix(in oklab, var(--accent) 6%, var(--surface))
+  );
+}
+/* Keyboard focus ring (when tabbing with keyboard) */
+:where(button, a, input):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+.site-footer {
+  position: fixed;
+  padding-right:30px;
+  height:50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+body.no-scroll {
+  overflow: hidden;
+}

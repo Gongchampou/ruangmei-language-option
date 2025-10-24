@@ -1,0 +1,200 @@
+/* Page theme overrides: unique palette for Community */
+:root {
+  --primary: #8b5cf6;
+  --accent: #f59e0b;
+  --ring: rgba(139, 92, 246, 0.35);
+}
+body[data-theme="light"] {
+  --primary: #5b21b6;
+  --accent: #d97706;
+  --ring: rgba(91, 33, 182, 0.25);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-bottom: 24px;
+  scroll-snap-type: none;
+}
+.section {
+  padding: 1.25rem 0;
+  min-height: auto;
+  scroll-snap-align: unset;
+}
+.badges {
+  display: inline-flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-size: 0.9rem;
+}
+
+/* Split hero: text + visual */
+.split {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 1rem;
+  align-items: center;
+  min-height: auto;
+}
+@media (max-width: 900px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+}
+.lede {
+  color: var(--muted);
+  max-width: 60ch;
+}
+.split h1 {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-visual {
+  position: relative;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  min-height: 280px;
+  background:
+    linear-gradient(
+      to bottom right,
+      rgba(91, 141, 239, 0.3),
+      rgba(45, 212, 191, 0.2)
+    ),
+    url("../image/Ruangmei.png") center/cover no-repeat;
+}
+
+/* Stats */
+.stat-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 900px) {
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.stat {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  padding: 1rem;
+  text-align: center;
+}
+.stat .num {
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.stat .label {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Timeline */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+.timeline li {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  padding: 0.85rem 1rem 0.85rem 1.25rem;
+}
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 1rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--primary);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+.timeline h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+}
+
+/* Quotes */
+.quotes {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 900px) {
+  .quotes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .quotes {
+    grid-template-columns: 1fr;
+  }
+}
+.quote {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: 0.8rem;
+  padding: 1rem;
+}
+.quote blockquote {
+  margin: 0;
+  color: var(--muted);
+}
+.quote figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Call-to-action banner */
+.cta-banner {
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  margin: 0 1rem;
+  background: linear-gradient(
+    to right,
+    color-mix(in oklab, var(--primary) 26%, var(--surface)),
+    color-mix(in oklab, var(--accent) 24%, var(--surface))
+  );
+}
+.cta-banner .inner {
+  padding: 1.25rem;
+  display: grid;
+  gap: 0.5rem;
+  text-align: center;
+}
+.cta-banner p {
+  color: var(--muted);
+  margin: 0;
+}

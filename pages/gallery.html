@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Explore the Ruangmei (Rongmei) gallery: motifs, attire, festivals, landscapes. Filter, search, and view images in a lightbox." />
+  <title>Gallery · Ruangmei (Rongmei)</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../image/favicon_io/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../asset/css/style.css" />
+  <link rel="stylesheet" href="../asset/css/nav.css" />
+  <link rel="stylesheet" href="../asset/css/gallery.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"><img class="logo-image" src="../image/icon/hornbill-bird-cartoon-removebg-preview_1_-removebg-preview.png" alt="logo" loading="lazy"/></span>
+        <span class="brand-text">Ruangmei · Rongmei</span>
+      </div>
+      <nav class="site-nav" aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu" id="navToggle">☰</button>
+        <ul id="primary-menu">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./culture.html">Culture</a></li>
+          <li><a href="./gallery.html" aria-current="page">Gallery</a></li>
+          <li class="has-submenu">
+            <a class="submenu-toggle">Resources ▾</a>
+            <ul class="submenu">
+              <li><a href="./library.html">Books</a></li>
+              <li><a href="./music.html">Music</a></li>
+              <!--
+              <li class="has-submenu"><a href="#" class="submenu-toggle">Web</a></li>
+              -->
+              <li><a href="./contribution.html">Contribute</a></li>
+              <li><a href="./Videos.html">Videos</a></li>
+            </ul>
+          </li>
+          <li><a href="./community.html">Community</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌓</button>
+      
+      <div id="langMount" class="lang-mount"></div>
+    </div>
+  </header>
+
+  <main id="main" style="display:flex;">
+    <section class="section">
+      <div class="container">
+        <div class="gl-toolbar">
+          <h1 style="margin:.25rem 0 .5rem; padding-top:0px; margin-top:-15px;">Image Library</h1>
+          <div class="gl-search">
+            <input id="glSearch" type="search" placeholder="Search images" aria-label="Search images" />
+          </div>
+        </div>
+        <div class="gl-toolbar">
+          <div class="gl-chips" role="tablist" aria-label="Filter gallery">
+            <button class="gl-chip active" data-filter="all" role="tab" aria-selected="true">All</button>
+            <button class="gl-chip" data-filter="festival" role="tab">Festival</button>
+            <button class="gl-chip" data-filter="attire" role="tab">Attire</button>
+            <button class="gl-chip" data-filter="landscape" role="tab">Landscape</button>
+            <button class="gl-chip" data-filter="motif" role="tab">Motif</button>
+            <button class="gl-chip" data-filter="archive" role="tab">Archive</button>
+          </div>  
+        </div>
+
+        <div class="gl-grid">
+          <!-- Prototype items (replace with your own images later) -->
+          <article class="g-item" data-tags="festival" data-title="Gaan-Ngai Dance">
+            <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Festival dance placeholder" loading="lazy" />
+            <div class="g-cap">Gaan‑Ngai Dance</div>
+          </article>
+          <article class="g-item" data-tags="landscape" data-title="Homeland Hills">
+            <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Hills landscape placeholder" loading="lazy" />
+            <div class="g-cap">Homeland Hills</div>
+          </article>
+          <article class="g-item" data-tags="motif attire" data-title="Shawl Motif">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLow4MwO6DIHRtXnG3rD8-Yl9LlQeWMcGRSw&s" alt="Textile motif placeholder" />
+            <div class="g-cap">Shawl Motif</div>
+          </article>
+          <article class="g-item" data-tags="archive" data-title="Archive Photo">
+            <img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=800&auto=format&fit=crop&q=60" alt="Archive photo placeholder" />
+            <div class="g-cap">Archive Photo</div>
+          </article>
+          <article class="g-item" data-tags="attire" data-title="Traditional Attire">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfTcUm3ek2GjDsQhIoMwjsIuJbdnBoi49NWg&s" alt="Traditional attire placeholder" />
+            <div class="g-cap">Traditional Attire</div>
+          </article>
+          <article class="g-item" data-tags="festival" data-title="Drum & Music">
+            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&auto=format&fit=crop&q=60" alt="Drum music placeholder" />
+            <div class="g-cap">Drum & Music</div>
+          </article>
+          <article class="g-item" data-tags="landscape" data-title="Village Path">
+            <img src="https://images.unsplash.com/photo-1455849318743-b2233052fcff?w=800&auto=format&fit=crop&q=60" alt="Village path placeholder" />
+            <div class="g-cap">Village Path</div>
+          </article>
+          <article class="g-item" data-tags="motif" data-title="Beadwork">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuMuIrLDVpR0iJiBVkXqO9bMCTuPYmtDcVFw&s" alt="Beadwork placeholder" />
+            <div class="g-cap">Beadwork</div>
+          </article>
+          <article class="g-item" data-tags="archive" data-title="Old Document">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Shim_Laam.jpg" alt="Old document placeholder" />
+            <div class="g-cap">Old Document</div>
+          </article>
+          <article class="g-item" data-tags="attire motif" data-title="Textile Detail">
+            <img src="https://images.unsplash.com/photo-1578932750294-f5075e85f44a?w=800&auto=format&fit=crop&q=60" alt="Textile detail placeholder" />
+            <div class="g-cap">Textile Detail</div>
+          </article>
+          <!-- Added real photo prototypes (replace with your own later) -->
+          <article class="g-item" data-tags="festival" data-title="Festival Firelight">
+            <img src="https://source.unsplash.com/800x600/?festival,fire" alt="Festival bonfire" loading="lazy" />
+            <div class="g-cap">Festival Firelight</div>
+          </article>
+          <article class="g-item" data-tags="festival" data-title="Circle Dance">
+            <img src="https://source.unsplash.com/800x600/?festival,dance" alt="People dancing in a circle" loading="lazy" />
+            <div class="g-cap">Circle Dance</div>
+          </article>
+          <article class="g-item" data-tags="festival" data-title="Festival Drummers">
+            <img src="https://source.unsplash.com/800x600/?drum,festival" alt="Drummers performing" loading="lazy" />
+            <div class="g-cap">Festival Drummers</div>
+          </article>
+          <article class="g-item" data-tags="attire" data-title="Shawl in Red">
+            <img src="https://source.unsplash.com/800x600/?shawl,textile" alt="Red shawl textile" loading="lazy" />
+            <div class="g-cap">Shawl in Red</div>
+          </article>
+          <article class="g-item" data-tags="attire" data-title="Bead Necklace">
+            <img src="https://source.unsplash.com/800x600/?bead,necklace" alt="Beaded necklace" loading="lazy" />
+            <div class="g-cap">Bead Necklace</div>
+          </article>
+          <article class="g-item" data-tags="attire" data-title="Traditional Headgear">
+            <img src="https://source.unsplash.com/800x600/?headdress,traditional" alt="Traditional headgear" loading="lazy" />
+            <div class="g-cap">Traditional Headgear</div>
+          </article>
+          <article class="g-item" data-tags="landscape" data-title="River Valley">
+            <img src="https://source.unsplash.com/800x600/?river,valley" alt="River valley" loading="lazy" />
+            <div class="g-cap">River Valley</div>
+          </article>
+          <article class="g-item" data-tags="landscape" data-title="Sunrise Hills">
+            <img src="https://source.unsplash.com/800x600/?hills,sunrise" alt="Sunrise over hills" loading="lazy" />
+            <div class="g-cap">Sunrise Hills</div>
+          </article>
+          <article class="g-item" data-tags="landscape" data-title="Forest Path">
+            <img src="https://source.unsplash.com/800x600/?forest,path" alt="Forest path" loading="lazy" />
+            <div class="g-cap">Forest Path</div>
+          </article>
+          <article class="g-item" data-tags="landscape" data-title="Village Fields">
+            <img src="https://source.unsplash.com/800x600/?village,fields" alt="Village fields" loading="lazy" />
+            <div class="g-cap">Village Fields</div>
+          </article>
+          <article class="g-item" data-tags="motif" data-title="Loom Weaving">
+            <img src="https://source.unsplash.com/800x600/?loom,weaving" alt="Loom weaving" loading="lazy" />
+            <div class="g-cap">Loom Weaving</div>
+          </article>
+          <article class="g-item" data-tags="motif" data-title="Textile Pattern">
+            <img src="https://source.unsplash.com/800x600/?textile,pattern" alt="Textile pattern" loading="lazy" />
+            <div class="g-cap">Textile Pattern</div>
+          </article>
+          <article class="g-item" data-tags="motif" data-title="Bead Pattern">
+            <img src="https://source.unsplash.com/800x600/?beads,pattern" alt="Beadwork pattern" loading="lazy" />
+            <div class="g-cap">Bead Pattern</div>
+          </article>
+          <article class="g-item" data-tags="motif" data-title="Basket Weave">
+            <img src="https://source.unsplash.com/800x600/?basket,weave" alt="Basket weave motif" loading="lazy" />
+            <div class="g-cap">Basket Weave</div>
+          </article>
+          <article class="g-item" data-tags="archive" data-title="Old Map">
+            <img src="https://source.unsplash.com/800x600/?old,map" alt="Old map" loading="lazy" />
+            <div class="g-cap">Old Map</div>
+          </article>
+          <article class="g-item" data-tags="archive" data-title="Letter Script">
+            <img src="https://source.unsplash.com/800x600/?letter,manuscript" alt="Old letter script" loading="lazy" />
+            <div class="g-cap">Letter Script</div>
+          </article>
+          <article class="g-item" data-tags="archive" data-title="Historic Portrait">
+            <img src="https://source.unsplash.com/800x600/?historic,portrait" alt="Historic portrait" loading="lazy" />
+            <div class="g-cap">Historic Portrait</div>
+          </article>
+          <article class="g-item" data-tags="archive" data-title="Community House">
+            <img src="https://source.unsplash.com/800x600/?traditional,house" alt="Traditional community house" loading="lazy" />
+            <div class="g-cap">Community House</div>
+          </article>
+          <article class="g-item" data-tags="festival" data-title="Bonfire Night">
+            <img src="https://source.unsplash.com/800x600/?bonfire,night" alt="Festival bonfire night" loading="lazy" />
+            <div class="g-cap">Bonfire Night</div>
+          </article>
+          <article class="g-item" data-tags="attire" data-title="Handwoven Wrap">
+            <img src="https://source.unsplash.com/800x600/?handwoven,wrap" alt="Handwoven wrap" loading="lazy" />
+            <div class="g-cap">Handwoven Wrap</div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Viewer overlay -->
+  <div class="gl-viewer" aria-modal="true" role="dialog" aria-labelledby="glTitle">
+    <div class="gl-stage">
+      <img src="" alt="Selected image" />
+      <div class="gl-fallback hide">Image failed to load. Try next/prev or fullscreen.</div>
+      <div class="gl-ctrls">
+        <button id="glPrev" class="gl-btn" aria-label="Previous">◀</button>
+        <button id="glNext" class="gl-btn" aria-label="Next">▶</button>
+      </div>
+      <button id="glFull" class="gl-btn gl-full" aria-label="Enter fullscreen">⛶</button>
+      <button class="gl-btn gl-close" aria-label="Close">✕</button>
+      <div class="gl-info">
+        <strong id="glTitle">Preview</strong>
+        <div class="gl-actions"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>  Ruangmei · Rongmei Community. Copyright Reserved.</p>
+      <p><a href="#" id="backToTop" style="color: var(--primary);">🔼</a></p>
+    </div>
+  </footer>
+
+  <script src="../asset/js/gallery.js" defer></script>
+  <script>var fallback = [];</script>
+  <script src="../asset/js/script.js" defer></script>
+  <script src="../asset/js/translate.js" defer></script>
+</body>
+</html>

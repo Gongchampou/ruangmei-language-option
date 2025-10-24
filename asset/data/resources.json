@@ -1,0 +1,49 @@
+{
+  "resources": [
+    {
+      "id": "book-gaan-ngai",
+      "title": "Gaan-Ngai Festival Overview",
+      "type": "book",
+      "year": 2019,
+      "source": "Community placeholder",
+      "description": "A concise introduction to the post-harvest festival celebrated with dance, music, and communal feasts.",
+      "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "sizeLabel": "~1 MB",
+      "tags": ["festival", "culture"]
+    },
+    {
+      "id": "photo-shawl",
+      "title": "Traditional Shawl Pattern (placeholder)",
+      "type": "photo",
+      "year": 2021,
+      "source": "Unsplash placeholder",
+      "description": "Representative textile motif. Replace with community-authorized image.",
+      "fileUrl": "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=1200&auto=format&fit=crop&q=75",
+      "previewUrl": "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=1200&auto=format&fit=crop&q=75",
+      "tags": ["attire", "textile"]
+    },
+    {
+      "id": "music-drum",
+      "title": "Traditional Drum Loop (placeholder)",
+      "type": "music",
+      "year": 2020,
+      "source": "Sample audio",
+      "description": "Short audio sample. Replace with community-approved field recordings.",
+      "fileUrl": "https://samplelib.com/lib/preview/mp3/sample-3s.mp3",
+      "previewUrl": "https://samplelib.com/lib/preview/mp3/sample-3s.mp3",
+      "sizeLabel": "~100 KB",
+      "tags": ["music"]
+    },
+    {
+      "id": "other-glossary",
+      "title": "Community Terms Glossary (CSV placeholder)",
+      "type": "other",
+      "year": 2018,
+      "source": "Open sample",
+      "description": "Replace with language glossary or wordlist (CSV/TSV).",
+      "fileUrl": "https://people.sc.fsu.edu/~jburkardt/data/csv/airtravel.csv",
+      "sizeLabel": "~1 KB",
+      "tags": ["language"]
+    }
+  ]
+}
